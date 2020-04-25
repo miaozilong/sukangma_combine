@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<view class="container">
+	<form bindsubmit="formSubmit" bindreset="formReset">
+		<view>
+			11号 缪钰雯
+		</view>
+		<view>
+			缪钰雯 爸爸
+		</view>
+		<view>
+			缪钰雯 妈妈
+		</view>
+		<view>
+			缪钰雯 奶奶
+		</view>
+		<view>
+			缪钰雯 弟弟
+		</view>
+		<view>
+			<button bindtouchend="up1">上传图片(5张)</button>
+		</view>
+		<view class="btn-area">
+			<button formType="submit">下载图片</button>
+		</view>
+		<view>
+			<image src="{{img1src}}"></image>
+			<image src="{{img2src}}"></image>
+			<image src="{{img3src}}"></image>
+			<image src="{{img4src}}"></image>
+			<image src="{{img5src}}"></image>
+		</view>
+		<view class="canvasWrapper">
+			<canvas type="2d" class="myCanvas" canvas-id="myCanvas" />
+		</view>
+	</form>
+</view>

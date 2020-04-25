@@ -1,0 +1,42 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+image{
+  /*
+  1080 * 1920
+  */
+  width: 50px;
+  height: 88.8888px;
+}
+
+/* #myCanvas{
+  width: 250px;
+  height: 88.8888px;
+} */
+.canvasWrapper{
+  width: 250px;
+  height: 80px;
+}
+.myCanvas{
+  width: 5400px;
+  height: 1920px;
+}
