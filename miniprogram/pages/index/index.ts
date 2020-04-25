@@ -21,7 +21,6 @@ Page({
     })
     setTimeout(() => {
       wx.canvasToTempFilePath({
-        canvas: 'myCanvas',
         canvasId: 'myCanvas',
         quality: 1,
         success: function (res) {
@@ -85,36 +84,30 @@ Page({
           img5src: tempFilePaths[4],
         })
         // 创建画布对象
-        const query = wx.createSelectorQuery()
-        query.select('#myCanvas')
-          .fields({ node: true, size: true })
-          .exec((res) => {
-            const canvas = res[0].node
-            const ctx = canvas.getContext('2d')
-            debugger
-            // 获取图片信息，要按照原图来绘制，否则图片会变形 
-            let drawText = ['11号 缪钰雯', '缪钰雯 爸爸', '缪钰雯 妈妈', '缪钰雯 奶奶', '缪钰雯 弟弟'];
-            let i = 0;
-            for (let key in tempFilePaths) {
-              let dx: number = i * 1080;
-              wx.getImageInfo({
-                src: tempFilePaths[key],
-                success: res => {
-                  let imgW = res.width
-                  let imgH = res.height
-                  let imgPath = res.path
-                  ctx.drawImage(imgPath, dx, 0, imgW, imgH)
-                  ctx.font = "70px orbitron";
-                  ctx.fillStyle = "red";
-                  ctx.fillText(drawText[key], dx + 350, imgH - 170);
-                  ctx.draw(true)
-                }
-              })
-              i++;
+        const ctx = wx.createCanvasContext("myCanvas", that)
+        // 获取图片信息，要按照原图来绘制，否则图片会变形 
+        let drawText = ['11号 缪钰雯', '缪钰雯 爸爸', '缪钰雯 妈妈', '缪钰雯 奶奶', '缪钰雯 弟弟'];
+        let i = 0;
+        for (let key in tempFilePaths) {
+          let dx: number = i * 1080;
+          wx.getImageInfo({
+            src: tempFilePaths[key],
+            success: res => {
+              console.log(res)
+              let imgW = res.width
+              let imgH = res.height
+              let imgPath = res.path
+              ctx.drawImage(imgPath, dx, 0, imgW, imgH)
+              ctx.font = "70px orbitron";
+              ctx.fillStyle = "red";
+              ctx.fillText(drawText[key], dx + 350, imgH - 170);
+              ctx.draw(true)
             }
-            console.log('上传成功')
-            wx.hideLoading();
           })
+          i++;
+        }
+        console.log('上传成功')
+        wx.hideLoading();
       }
     })
   }

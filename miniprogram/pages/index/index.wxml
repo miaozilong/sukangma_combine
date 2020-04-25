@@ -30,7 +30,7 @@
 			<image src="{{img5src}}"></image>
 		</view>
 		<view class="canvasWrapper">
-			<canvas type="2d" class="myCanvas" canvas-id="myCanvas" />
+			<canvas class="myCanvas" canvas-id="myCanvas"  />
 		</view>
 	</form>
 </view>
