@@ -19,7 +19,7 @@ Page({
       title: '下载中...',
       mask: true,
     })
-    setTimeout(() => {
+    let fun = () => {
       wx.canvasToTempFilePath({
         canvasId: 'myCanvas',
         quality: 1,
@@ -49,15 +49,11 @@ Page({
         },
         fail: function (error) {
           console.log("生成的图拍呢 失败 fail fail fail ", error)
-          wx.hideLoading()
-          wx.showModal({
-            title: '温馨提示',
-            content: `小程序码图片合成失败，请重试,error.errMsg,${JSON.stringify(error)}`,
-            showCancel: false
-          })
+          setTimeout(fun, 5 * 1000)
         }
       }, that)
-    }, 2 * 1000)
+    }
+    setTimeout(fun, 5 * 1000)
   },
   formReset: function () {
     console.log('form发生了reset事件')
