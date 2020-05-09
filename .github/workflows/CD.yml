@@ -2,32 +2,52 @@
 
 name: CD
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+# 发生repository_dispatch时执行
+on: repository_dispatch
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# 工作
+# 检出项目
+# 获取base64编码
+# 写入到本地图片文件
+# 使用nodejs读取图片文件
+# 使用nodejs合成图片
+# 合成图片写到本地文件
+# 使用邮箱发送本地合成好的文件
+#
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a single job called "base"
+  base:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # 检出项目
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
+      # 获取base64编码  ${{ github.event.client_payload.pics }}
+      - name: base64tofile
+        uses: timheuer/base64-to-file@v1.0.3
+        with:
+          fileName: '1.png'
+          encodedString: ${{ github.event.client_payload.pics[0] }}
 
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      # 发送邮件
+      - name: Send email
+        uses: devellany/send-mailer@v1.0.2
+        with:
+          host: smtp.yandex.com
+            # Optional port (defaults to 465)
+            port: 465
+            account: miaozilong31@yandex.com
+            password: m7269535
+            sender: miaozilong
+            from: miaozilong31@yandex.com
+            to: miao.zilong@qq.com
+            subject: 测试主题
+            body: 正文内容
+            # Optional content type (defaults to text/plain)
+            contentType: text/plain
+            # Optional attachment files (JSON type. require property 'path')
+            attachments: '[{"path":"1.png"}]'
