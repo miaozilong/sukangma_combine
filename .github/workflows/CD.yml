@@ -38,7 +38,6 @@ jobs:
         uses: devellany/send-mailer@v1.0.2
         with:
           host: smtp.yandex.com
-            # Optional port (defaults to 465)
             port: 465
             account: miaozilong31@yandex.com
             password: m7269535
