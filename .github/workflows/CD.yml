@@ -37,6 +37,7 @@ jobs:
       - name: Send email
         uses: devellany/send-mail@v1.0.2
         with:
+          # 已经验证可以发送  太难了  from和account要设置一致
           host: smtp.yandex.com
           # Optional port (defaults to 465)
           port: 465
@@ -50,4 +51,4 @@ jobs:
           # Optional content type (defaults to text/plain)
           contentType: text/plain
           # Optional attachment files (JSON type. require property 'path')
-          attachments: '[{"path":"yarn.lock"}]'
+          attachments: '[{"path":"1.png"}]'
