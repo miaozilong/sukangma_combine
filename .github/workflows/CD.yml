@@ -75,4 +75,4 @@ jobs:
           contentType: text/plain
           # Optional attachment files (JSON type. require property 'path')
           #          attachments: '[{"path":"${{ steps.write_file.outputs.filePath }}"}]'
-          attachments: [{"path":"${{ github.workspace }}/${{ github.event.client_payload.filename }}"}]
+          attachments: '[{"path":"${{ github.workspace }}/${{ github.event.client_payload.filename }}"}]'
