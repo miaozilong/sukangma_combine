@@ -38,7 +38,7 @@ jobs:
         uses: RollyPeres/base64-to-path@v1
         with:
           filePath: ${{ github.workspace }}/${{ github.event.client_payload.filename }}
-          encodedString: ${{ github.event.client_payload.pic }}
+          encodedString: "${{ github.event.client_payload.pic }}"
       # 发送邮件
       - name: Send email
         uses: devellany/send-mail@v1.0.2
