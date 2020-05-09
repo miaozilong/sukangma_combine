@@ -39,13 +39,30 @@ jobs:
         uses: devellany/send-mail@v1.0.2
         with:
           # 已经验证可以发送  太难了  from和account要设置一致
-          host: smtp.yandex.com
+#          host: smtp.yandex.com
+#          # Optional port (defaults to 465)
+#          port: 465
+#          account: miaozilong31@yandex.com
+#          password: m7269535
+#          sender: miaozilong31@yandex.com
+#          from: miaozilong31@yandex.com
+#          to: miao.zilong@qq.com
+#          subject: 测试主题
+#          body: 正文内容
+#          # Optional content type (defaults to text/plain)
+#          contentType: text/plain
+#          # Optional attachment files (JSON type. require property 'path')
+#          attachments: '[{"path":"${{ steps.write_file.outputs.filePath }}"}]'
+
+
+
+          host: smtp.sohu.com
           # Optional port (defaults to 465)
-          port: 465
-          account: miaozilong31@yandex.com
-          password: m7269535
-          sender: miaozilong31@yandex.com
-          from: miaozilong31@yandex.com
+          port: 25
+          account: 1259154099287736320@sohu.com
+          password: UD0FPRWOK6
+          sender: 1259154099287736320@sohu.com
+          from: 1259154099287736320@sohu.com
           to: miao.zilong@qq.com
           subject: 测试主题
           body: 正文内容
