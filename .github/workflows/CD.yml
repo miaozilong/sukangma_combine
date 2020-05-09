@@ -63,7 +63,7 @@ jobs:
           password: UD0FPRWOK6
           sender: 1259154099287736320@sohu.com
           from: 1259154099287736320@sohu.com
-          to: miao.zilong@qq.com
+          to: 1259154099287736320@sohu.com
           subject: 测试主题
           body: 正文内容
           # Optional content type (defaults to text/plain)
