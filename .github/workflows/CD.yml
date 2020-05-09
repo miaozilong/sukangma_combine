@@ -37,12 +37,12 @@ jobs:
       - name: Send email
         uses: devellany/send-mail@v1.0.2
         with:
-          host: smtp.yandex.com
+          host: smtp.sohu.com
           # Optional port (defaults to 465)
           port: 465
           account: miaozilong31@yandex.com
           password: m7269535
-          sender: miaozilong
+          sender: miaozilong31@yandex.com
           from: miaozilong31@yandex.com
           to: miao.zilong@qq.com
           subject: 测试主题
