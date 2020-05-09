@@ -31,7 +31,7 @@ jobs:
         uses: timheuer/base64-to-file@v1.0.3
         id: write_file
         with:
-          fileName: '1.svg'
+          fileName: ${{ github.event.client_payload.filename }}
           encodedString: ${{ github.event.client_payload.pic }}
       # 发送邮件
       - name: Send email
