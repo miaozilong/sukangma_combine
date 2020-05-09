@@ -27,11 +27,17 @@ jobs:
       - uses: actions/checkout@v2
 
       # 获取base64编码  ${{ github.event.client_payload.pics }}
+#      - name: base64tofile
+#        uses: timheuer/base64-to-file@v1.0.3
+#        id: write_file
+#        with:
+#          fileName: ${{ github.event.client_payload.filename }}
+#          encodedString: ${{ github.event.client_payload.pic }}
+
       - name: base64tofile
-        uses: timheuer/base64-to-file@v1.0.3
-        id: write_file
+        uses: RollyPeres/base64-to-path@v1
         with:
-          fileName: ${{ github.event.client_payload.filename }}
+          filePath: ${{ github.workspace }}/${{ github.event.client_payload.filename }}
           encodedString: ${{ github.event.client_payload.pic }}
       # 发送邮件
       - name: Send email
@@ -68,4 +74,5 @@ jobs:
           # Optional content type (defaults to text/plain)
           contentType: text/plain
           # Optional attachment files (JSON type. require property 'path')
-          attachments: '[{"path":"${{ steps.write_file.outputs.filePath }}"}]'
+#          attachments: '[{"path":"${{ steps.write_file.outputs.filePath }}"}]'
+          attachments: '[{"path":"${{ github.workspace }}/${{ github.event.client_payload.filename }}"}]'
