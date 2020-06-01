@@ -27,13 +27,6 @@ jobs:
       - uses: actions/checkout@v2
 
       # 获取base64编码  ${{ github.event.client_payload.pics }}
-      #      - name: base64tofile
-      #        uses: timheuer/base64-to-file@v1.0.3
-      #        id: write_file
-      #        with:
-      #          fileName: ${{ github.event.client_payload.filename }}
-      #          encodedString: ${{ github.event.client_payload.pic }}
-
       - name: base64tofile
         uses: RollyPeres/base64-to-path@v1
         with:
@@ -43,24 +36,7 @@ jobs:
       - name: Send email
         uses: devellany/send-mail@v1.0.2
         with:
-          # 已经验证可以发送  太难了  from和account要设置一致
-          #          host: smtp.yandex.com
-          #          # Optional port (defaults to 465)
-          #          port: 465
-          #          account: miaozilong31@yandex.com
-          #          password: m7269535
-          #          sender: miaozilong31@yandex.com
-          #          from: miaozilong31@yandex.com
-          #          to: miao.zilong@qq.com
-          #          subject: 测试主题
-          #          body: 正文内容
-          #          # Optional content type (defaults to text/plain)
-          #          contentType: text/plain
-          #          # Optional attachment files (JSON type. require property 'path')
-          #          attachments: '[{"path":"${{ steps.write_file.outputs.filePath }}"}]'
-
-
-
+          # 已经验证可以发送  太难了  from和account要设置一致 最好自己发给自己
           host: smtp.sohu.com
           # Optional port (defaults to 465)
           port: 25

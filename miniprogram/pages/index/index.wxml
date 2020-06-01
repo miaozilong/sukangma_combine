@@ -17,6 +17,9 @@
 			缪钰雯 弟弟
 		</view>
 		<view>
+			<button bindtouchend="invokeClodFunction">调用云函数</button>
+		</view>
+		<view>
 			<button bindtouchend="up1">上传图片(5张)</button>
 		</view>
 		<view class="btn-area">

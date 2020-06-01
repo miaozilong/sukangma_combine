@@ -4,6 +4,7 @@
 		"ignore": []
 	},
 	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"compileType": "miniprogram",
 	"libVersion": "2.8.2",
 	"projectname": "sukangma_combine",
@@ -16,5 +17,6 @@
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"appid": "wx79e0b3d5dfe5faa4",
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {}
 }
