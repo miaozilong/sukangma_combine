@@ -11,6 +11,8 @@ Page({
         img3src: '',
         img4src: '',
         img5src: '',
+        combineHeight: 0,
+        combineWidth: 0,
     },
     formSubmit: function (e: any) {
         console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -84,23 +86,38 @@ Page({
                 // 获取图片信息，要按照原图来绘制，否则图片会变形
                 let drawText = ['11号 缪钰雯', '缪钰雯 爸爸', '缪钰雯 妈妈', '缪钰雯 奶奶', '缪钰雯 弟弟'];
                 let i = 0;
+                let imgWs = [];
+                let imgHs = [];
+                let imgPaths = [];
                 for (let key in tempFilePaths) {
-                    let dx: number = i * 1080;
                     wx.getImageInfo({
                         src: tempFilePaths[key],
                         success: res => {
-                            console.log(res)
-                            let imgW = res.width
-                            let imgH = res.height
-                            let imgPath = res.path
-                            ctx.drawImage(imgPath, dx, 0, imgW, imgH)
-                            ctx.font = "70px orbitron";
-                            ctx.fillStyle = "red";
-                            ctx.fillText(drawText[key], dx + 350, imgH - 170);
-                            ctx.draw(true)
+                            i++;
+                            const imgW = res.width;
+                            const imgH = res.height;
+                            const imgPath = res.path;
+                            imgWs.push(imgW)
+                            imgHs.push(imgH)
+                            imgPaths.push(imgPath)
+                            if (i === drawText.length) {
+                                that.setData({
+                                    canvasWidth: imgW * drawText.length,
+                                    canvasHeight: imgH,
+                                })
+                                ctx.font = "70px orbitron";
+                                ctx.fillStyle = "red";
+                                setTimeout(() => {
+                                    for (let i = 0; i <= drawText.length; i++) {
+                                        const dx: number = i * imgW;
+                                        ctx.drawImage(imgPaths[i], dx, 0, imgW, imgH)
+                                        ctx.fillText(drawText[i], dx + 250, imgH - 176);
+                                        ctx.draw(true)
+                                    }
+                                }, 1 * 1000)
+                            }
                         }
                     })
-                    i++;
                 }
                 console.log('上传成功')
                 wx.hideLoading();

@@ -36,7 +36,3 @@ image{
   width: 250px;
   height: 80px;
 }
-.myCanvas{
-  width: 5400px;
-  height: 1920px;
-}
